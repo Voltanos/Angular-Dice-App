@@ -1,0 +1,24 @@
+<div>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Type of Dice</th>
+                <th>Number of Rolls</th>
+                <th>Number of Sides</th>
+                <th>(+/-) Modifier</th>
+                <th>Actions</th>
+                <th style="width: 20%;">Results</th>
+            </tr>
+            <tr *ngFor="let item of DiceList; let i = index">
+                <td>
+                    {{item.Title}}
+                </td>
+                <td><input class="form-control" type="number" [value]="item.Rolls" min="1" (blur)="onBlurRolls($event, i)"/></td>
+                <td><input class="form-control" type="number" min="1" [value]="item.Sides" [readonly]="item.SidesIsReadonly" (blur)="onBlurSides($event, i)" /></td>
+                <td><input class="form-control" type="number" [value]="item.Modifier" (blur)="onBlurModifier($event, i)" /></td>
+                <td><input class="btn-default form-control" type="button" name="Submit" value="Roll" (click)="Roll(item)" /></td>
+                <td><input class="form-control" type="number" [value]="item.Results" readonly /></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
